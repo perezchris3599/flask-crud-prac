@@ -1,0 +1,4 @@
+env
+*.db
+*.sqlite2
+*.sqlite3
