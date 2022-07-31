@@ -78,6 +78,15 @@ def login():
     }
     return render_template('login.html', **context)
 
+@app.route()
+def signup():
+    form=SignUpForm()
+
+    context={
+        'form':form
+    }
+    return render_template('signup.html',**context)
+
 @app.route('/contacts')
 def contacts():
 
