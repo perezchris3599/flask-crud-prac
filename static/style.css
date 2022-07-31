@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+.navbar{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: dodgerblue;
+}
+.nav a{
+    padding: 15px;
+    color: white;
+    text-transform: capitalize;
+}
