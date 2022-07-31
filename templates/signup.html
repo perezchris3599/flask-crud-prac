@@ -1,12 +1,49 @@
 {% extends 'layout.html' %}
-
 {% block content %}
-    <div class="form">
-        <h4>SIGN UP</h4>
-        <form action="" method="post">
-            <div class="form-group">
-                <p>{{form.username.label}}</p>
-            </div>
-        </form>
-    </div>
+<div class="form">
+    <h4>Create Your Account</h4>
+    <form action="{{url_for('signup')}}" method="post">
+        <div class="form-group">
+            <p>{{form.username.label}}</p>
+            <p>
+                {{form.username(class='form-control')}}
+            </p>
+
+            {% for error in form.username.errors %}
+            <small class="error">{{error}}</small>
+            {% endfor %}
+
+        </div>
+        <div class="form-group">
+            <p>{{form.email.label}}</p>
+            <p>
+                {{form.email(class='form-control')}}
+            </p>
+            {% for error in form.email.errors %}
+            <small class="error">{{error}}</small>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            <p>{{form.password.label}}</p>
+            <p>
+                {{form.password(class='form-control')}}
+            </p>
+            {% for error in form.password.errors %}
+            <small class="error">{{error}}</small>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            <p>{{form.confirm.label}}</p>
+            <p>
+                {{form.confirm(class='form-control')}}
+            </p>
+            {% for error in form.confirm.errors %}
+            <small class="error">{{error}}</small>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            <p>{{form.submit(class='mybtn')}}</p>
+        </div>
+    </form>
+</div>
 {% endblock content %}
