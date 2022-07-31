@@ -1,9 +1,11 @@
-from flask import Flask, render_template, url_for
+from flask import Flask,render_template,url_for
 from flask_wtf import Flaskform
 from wtforms import StringField,TextAreaField,PasswordField,SubmitField
 from wtforms.validators import InputRequired,EqualTo,Length
 
 app=Flask(__name__)
+
+app.secret_key='fuckblackprejudice'
 
 posts=[
     {
@@ -36,15 +38,19 @@ posts=[
 class SignUpForm(FlaskForm):
     username=StringField(label="Username",validators=[InputRequired(message="Username should not be blank"),
     Length(min=5,max=25)])
-    email=StringField(label="Email",validators=[InputRequired(message="Username should not be blank"),Length(max=45,
+
+    email=StringField(label="Email", validators=[InputRequired(message="Username should not be blank"),Length(max=45,
     message="Email should have less than 45 characters")
     ])
+
     password=PasswordField(label="Password", validators=[InputRequired(message="Password should not be left blank"),
     Length(min=5,max=12,message="password should be between 5 and 12 characters")
     ])
+
     confirm=PasswordField(label="Confirm Password", validators=[InputRequired(message="Password should not be left blank"),
     Length(min=5,max=12,message="password should be between 5 and 12 characters"),EqualTo('pasword',message="Passwords do not match")
     ])
+
     submit=SubmitField(label="Sign up")
     
     
@@ -78,7 +84,7 @@ def login():
     }
     return render_template('login.html', **context)
 
-@app.route()
+@app.route('/signup')
 def signup():
     form=SignUpForm()
 
